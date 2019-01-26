@@ -10,12 +10,18 @@ apply plugin: 'android'
 
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
+    // Required for local unit tests (JUnit 4 framework)
+    testImplementation 'junit:junit:4.12'
 }
 
 android {
     compileSdkVersion 14
     buildToolsVersion "19.0.2"
 
+    testOptions {
+        reportDir "$rootDir/test-reports"
+        resultsDir "$rootDir/test-results"
+    }
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
